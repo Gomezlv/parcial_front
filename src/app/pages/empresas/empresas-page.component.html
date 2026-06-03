@@ -1,0 +1,51 @@
+<div class="page">
+  <form class="section" [formGroup]="form" (ngSubmit)="submit()">
+    <label class="field">
+      <span class="label">Nombre</span>
+      <input class="input" type="text" formControlName="nombre" />
+    </label>
+    <label class="field">
+      <span class="label">nit</span>
+      <input class="input" type="text" formControlName="nit" />
+    </label>
+    <label class="field">
+      <span class="label">Ciudad</span>
+      <input class="input" type="text" formControlName="ciudad" />
+    </label>
+    <label class="field">
+      <span class="label">Sector</span>
+      <input class="input" type="text" formControlName="sector" />
+    </label>
+    <button class="btn" type="submit">Guardar en bd</button>
+  </form>
+
+  <div class="section">
+    <h2>Empresas en la base de datos:</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>NIT</th>
+          <th>Ciudad</th>
+          <th>Sector</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (e of empresas; track e.id) {
+          <tr>
+            <td>{{ e.id }}</td>
+            <td>{{ e.nombre }}</td>
+            <td>{{ e.nit }}</td>
+            <td>{{ e.ciudad }}</td>
+            <td>{{ e.sector }}</td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5">No hay empresas registradas.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
